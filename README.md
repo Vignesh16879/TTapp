@@ -14,7 +14,8 @@ cd fcsapp/
 ```
 2. Install all the requirements
 ```
-pip install -r requirements.txt```
+pip install -r requirements.txt
+```
 
 4. Activate the virtual enviroment
    
