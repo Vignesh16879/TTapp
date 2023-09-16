@@ -9,7 +9,7 @@ Features:
 ```
 git clone https://github.com/Vignesh16879/TTapp.git
 
-cd fcsapp/
+cd TTapp/
 ```
 2. Install all the requirements
 ```
