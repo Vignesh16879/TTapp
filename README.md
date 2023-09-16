@@ -3,21 +3,30 @@ Features:
 1.
 
 ## Demo
+
+1. Clone the Github repo:
+   
 ```
-1. git clone https://github.com/Vignesh16879/TTapp.git
-```
-```
-2. cd fcsapp/
-```
-```
-3. source .venv/bin/activate
+git clone https://github.com/Vignesh16879/TTapp.git
 ```
 ```
-4. python3 manage.py makemigrations Scheduler
+cd fcsapp/
+```
+2. Install all the requirements
+```
+pip install -r requirements.txt```
+
+4. Activate the virtual enviroment
+   
+```
+source .venv/bin/activate
 ```
 ```
-5. python3 manage.py migrate
+python3 manage.py makemigrations Scheduler
 ```
 ```
-6. python3 manage.py runserver
+python3 manage.py migrate
+```
+```
+python3 manage.py runserver
 ```
