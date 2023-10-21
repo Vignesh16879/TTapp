@@ -32,6 +32,7 @@ class class_name(models.Model):
     table_id = models.IntegerField(primary_key = True, blank = False, null = False, unique = True)
     class_no = models.IntegerField()
     class_section = models.IntegerField()
+    subjects = ArrayField(ArrayField(models.TextField()))
 
 
 class time_table(models.Model):
