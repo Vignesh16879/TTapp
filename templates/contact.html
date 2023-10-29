@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>EduSchedula</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:ital,wght@0,300;0,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- css stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+
+
+  <!-- Font Awsome -->
+  <script src="https://kit.fontawesome.com/23125334b2.js" crossorigin="anonymous"></script>
+  <!-- bootstrap script -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <section id="title">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="base_index.html"> EduSchedula </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mg-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="base_index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="login-page">
+        <div class="container h-200">
+          <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
+              <div class="card fat">
+                <div class="card-body">
+                  <h4 class="card-title">Contact Us</h4>
+                  <form method="POST" class="my-login-validation" novalidate="">
+                    <div class="form-group row">
+                      <div class="col">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" placeholder="Name" aria-label="name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Your E-Mail Address</label>
+                      <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                      <div class="invalid-feedback">
+                        Email is invalid
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col">
+                        <label for="phone" class="form-label">Phone No.</label>
+                        <input type="number" class="form-control" placeholder="Phone NO" aria-label="Phone NO">
+                      </div>
+                    </div>
+
+
+
+                    <div class="form-group m-0">
+                      <button type="submit" class="btn btn-primary btn-block">
+                        Send
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+
+  </section>
+
+
+
+
+
+  <!-- Footer -->
+
+  <footer id="footer">
+    <div class="bottom-container">
+      <a class="icon footer-link" href=""><i class="fab fa-twitter "></i></a>
+      <a class="icon footer-link" href=""><i class="fab fa-instagram"></i></a>
+      <a class="icon footer-link" href=""><i class="fab fa-linkedin-in"></i></a>
+      <a class="icon footer-link" href=""><i class="fas fa-envelope"></i></a>
+      <p class="cprt">©️ 2023 SDOS GROUP PROJECT.</p>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
