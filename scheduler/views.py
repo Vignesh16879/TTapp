@@ -6,7 +6,7 @@ from rest_framework import viewsets
 
 # Models, Forms, Utils, Serializers
 from .models import teacher, student
-from .forms import LoginForm, AddTeacherForm
+from .forms import LoginForm, AddTeacherForm, AddStudentForm
 from .scheduler import Scheduler
 from .utils import user_login, Xlsx_extractor, OTP
 from .serializers import userSerializers
@@ -76,9 +76,17 @@ def logout(request):
     return redirect("login")
 
 
+# Profile
+def profile(request):
+    if user.authenticated:
+        pass
+    else:
+        return redirect("login")
+
+
 # Home
 def home(request):
-    return render(request, "add-teacher.html")
+    return render(request, "time_table.html")
     if user.authenticated:
         if user.type == "Principle":
             admin_home(request)
@@ -152,5 +160,63 @@ def add_teacher(request):
             return render(request, "")
         else:
             messages.error(request, "You are not Authorized to view this page")
+    else:
+        return redirect("login")
+
+
+def add_student(request):
+    if user.authenticated:
+        if user.type == "Principle" or user.type == "Time-Table In-charge":
+            if request.method == "POST":
+                form = AddStudentForm(request.POST)
+                
+                if form.is_valid():
+                    if form.f_name:
+                        pass
+                    
+                    if form.file:
+                        file = form.cleaned_data["file"]
+                        data = Xlsx_extractor.extract_xlsx(file)
+                        
+                    pass
+                
+            return render(request, "")
+        else:
+            messages.error(request, "You are not Authorized to view this page")
+    else:
+        return redirect("login")
+
+
+def view_teacher(request):
+    if user.authenticated:
+        pass
+    else:
+        return redirect("login")
+
+
+def view_student(request):
+    if user.authenticated:
+        pass
+    else:
+        return redirect("login")
+
+
+def view_time_table(request):
+    if user.authenticated:
+        pass
+    else:
+        return redirect("login")
+
+
+def add_or_update_grade(request):
+    if user.authenticated:
+        pass
+    else:
+        return redirect("login")
+
+
+def view_grades(request):
+    if user.authenticated:
+        pass
     else:
         return redirect("login")

@@ -15,6 +15,7 @@ import random
 import string
 import shutil
 import hashlib
+import openpyxl
 from twilio.rest import Client
 from datetime import datetime, timedelta
 
@@ -77,11 +78,30 @@ class Xlsx_extractor():
         except Exception as e:
             print(f"An error occurred: {e}")
         
-        return "Teachers/", new_name, current_time
+        return "Teachers/", new_name, type, current_time
+    
+    
+    def process_data(self, value):
+        if isinstance(value, (int, float)):
+            return int(value)
+
+        return value
     
     
     def extract_xlsx(self, file):
         base_dir, filename, current_time = self.file_upload(file)
+        workbook = openpyxl.load_workbook(base_dir / filename)
+        sheet = workbook.active
+        max_row = sheet.max_row
+        max_column = sheet.max_column
+        data = []
+        
+        for row in range(1, max_row + 1):
+            row_data = list(map(self.process_data, [sheet.cell(row = row, column = col).value for col in range(1, max_column + 1)]))
+            data.append(row_data)
+        
+        return data
+        
 
 
 # OTP
