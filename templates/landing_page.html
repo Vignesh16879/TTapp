@@ -1,7 +1,11 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
+  <base href="{% static '' %}" target="_blank">
   <meta charset="utf-8">
   <title>EduSchedula</title>
 
@@ -39,7 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mg-auto">
             <li class="nav-item">
-              <a class="nav-link" href="landing_page.html">HOME</a>
+              <a class="nav-link" href="../">HOME</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#pricing">ABOUT</a>
@@ -56,8 +60,8 @@
 
         <div class="col-lg-6">
           <h1 class="big-heading">Seamless Scheduling for Academic Success</h1>
-          <a type="button" class="download-button btn btn-dark btn-lg" href="sign-up.html"><i class="fa-solid fa-user-plus"></i> REGISTER | SIGN UP</a>
-          <a type="button" class="download-button btn btn-outline-light btn-lg" href="sign-in.html"><i class="fa-solid fa-right-to-bracket"></i> LOGIN | SIGN IN</a>
+          <a type="button" class="download-button btn btn-dark btn-lg" href="../register"><i class="fa-solid fa-user-plus"></i> REGISTER | SIGN UP</a>
+          <a type="button" class="download-button btn btn-outline-light btn-lg" href="../login"><i class="fa-solid fa-right-to-bracket"></i> LOGIN | SIGN IN</a>
         </div>
 
         <div class="col-lg-6">
@@ -79,7 +83,15 @@
       <a class="icon footer-link" href=""><i class="fab fa-instagram"></i></a>
       <a class="icon footer-link" href=""><i class="fab fa-linkedin-in"></i></a>
       <a class="icon footer-link" href=""><i class="fas fa-envelope"></i></a>
-      <p class="cprt">©️ 2023 SDOS GROUP PROJECT.</p>
+      <p class="cprt">
+        <div>
+          &copy;
+          <span id="copyright">
+              <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+          </span>
+          SDOS Group-7
+        </div>
+      </p>
     </div>
   </footer>
 

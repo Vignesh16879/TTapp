@@ -10,4 +10,4 @@ RUN pip install --user -r requirements.txt
 
 COPY . /app/
 
-CMD python3 manage.py runserver_plus 0.0.0.0:8000 --cert-file certificate/fo
+CMD python3 manage.py runserver_plus 0.0.0.0:8000 --cert-file certificate/foo

@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     # Django Apps
     'sslserver',
-    'django_extensions',
+    'django_extensions',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,13 +47,16 @@ INSTALLED_APPS = [
     # MyApps
     'scheduler.apps.SchedulerConfig',
     
+    # Tokens
+    'crispy_forms',
+    'rest_framework',
+    'rest_framework.authtoken',
+    
     # Authentications
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
     
     # Templates
     'compressor',
@@ -113,6 +116,16 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+               'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES':(
+                'rest_framework.permissions.IsAuthenticated',
+    ),
+
+}
+
 SITE_ID = 3
 
 LOGIN_REDIRECT_URL = '/'
@@ -139,20 +152,6 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        }
-    },
-    'facebook': {
-        'APP': {
-            'client_id': 'your-facebook-app-client-id',
-            'secret': 'your-facebook-app-secret',
-            'key': '',
-        },
-        'SCOPE': ['email'],  # Add other permissions if needed
-    },
-    'twitter': {
-        'APP': {
-            'consumer_key': 'your-twitter-consumer-key',
-            'consumer_secret': 'your-twitter-consumer-secret',
         }
     }
 }

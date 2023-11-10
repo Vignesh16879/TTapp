@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Q
 from django.contrib.postgres.fields import ArrayField
 
 import hashlib
@@ -7,37 +6,43 @@ import hashlib
 
 # Create your models here.
 class teacher(models.Model):
-    id = models.IntegerField(primary_key = True)
+    id = models.CharField(max_length = 20, primary_key = True)
     username = models.CharField(max_length = 50)
     password = models.TextField()
     email = models.CharField(max_length = 50)
-    phone = models.CharField(min_length = 10, max_length = 10)
+    phone = models.CharField(max_length = 10)
     f_name = models.CharField(max_length = 50)
     l_name = models.CharField(max_length = 50)
+    dob = models.DateTimeField()
     type = models.CharField(max_length = 50, default = "Teacher")
     post = models.CharField(max_length = 10)
     classes = ArrayField(models.IntegerField())
     subjects = ArrayField(models.CharField(max_length = 25))
 
 
-class user_login(models.Model):
+class student(models.Model):
+    id = models.CharField(max_length = 20, primary_key = True)
     username = models.CharField(max_length = 50)
-    authenticated = models.BooleanField(default = False)
-    user = teacher()
-    
-    def login(self, username, password):
-        result = teacher.objects.filter((Q(username = username) | Q(email = username) | Q(phone = username)) & Q(password = hashlib.sha256().update(password.encode()).hexdigest()))
-                
-        if result.exists():
-            self.authenticated = True
-            self.user = result.first()
-            
-            return self.authenticated, self.user
-        else:
-            return False, None
-       
+    password = models.TextField()
+    email = models.CharField(max_length = 50)
+    f_name = models.CharField(max_length = 50)
+    l_name = models.CharField(max_length = 50)
+    dob = models.DateTimeField()
+    type = models.CharField(max_length = 20, default = "Student")
+    father_f_name = models.CharField(max_length = 50)
+    father_l_name = models.CharField(max_length = 50)
+    f_dob = models.DateTimeField()
+    f_occupation = models.TextField()
+    mother_f_name = models.CharField(max_length = 50)
+    mother_l_name = models.CharField(max_length = 50)
+    m_dob = models.DateTimeField()
+    m_occupation = models.TextField()
+    current_class = models.IntegerField()
+    grades = ArrayField(models.JSONField())
+
 
 class files(models.Model):
+    file = models.FileField(default = 'None')
     original_filename = models.CharField(max_length = 255)
     renamed_filename = models.CharField(max_length = 255)
     file_type = models.CharField(max_length = 20)
@@ -57,11 +62,11 @@ class class_time_table(models.Model):
     class_teacher = models.IntegerField(unique = True)
     section = models.CharField(max_length = 5)
     subjects = subjects()
-    time_table = models.JSONField(default = list)
+    time_table = models.JSONField(default = [[{} for _ in range(6)] for _ in range(8)])
     
-    def __init__(self):
-        self.no_days = 6
-        self.no_periods = 8
+    def __init__(self, n = 6, m = 8):
+        self.no_days = n
+        self.no_periods = m
         self.time_table = [[{} for _ in range(self.no_days)] for _ in range(self.no_periods)]
 
 
