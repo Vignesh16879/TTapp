@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  TTAPP:
+    build: ./app/
+    restart: always
+    command: sh -c "sleep 10s ; pip install -r requirements.txt ; python3 manage.py migrate ; python3 manage.py migrate && python3 manage.py runserver_plus 0.0.0.0:7253 --cert-file certificate/foo"
+    depends_on:
+      - POSTGRES_DB
+    environment:
+      DB_HOST: 'POSTGRES_DB'
+    ports:
+      - '7253:7253'
+
+  POSTGRES_DB:
+    build: ./POSTGRES_DB/
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Vignesh9870
+    ports:
+      - '5432:5432'

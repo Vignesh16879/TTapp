@@ -7,7 +7,7 @@ from django.contrib.postgres.fields import ArrayField
 class LoginForm(forms.Form):
     username = forms.CharField(max_length = 50)
     password = forms.CharField(widget = forms.PasswordInput)
-    
+
 
 # Add Teacher File
 class AddTeacherForm(forms.Form):
@@ -39,3 +39,29 @@ class AddStudentForm(forms.Form):
     post = forms.CharField(max_length = 25)
     dob = forms.DateField()
     file = forms.FileField()
+
+
+class EditTeacherForm(forms.Form):
+    pass
+
+
+class EditStudentForm(forms.Form):
+    pass
+
+
+class TimeTableForm(forms.Form):
+    clas = forms.IntegerField()
+    sec = forms.CharField(max_length = 1)
+
+
+class ForgotPasswordEmailForm(forms.Form):
+    email = forms.EmailField()
+
+
+class ForgotPasswordOTPForm(forms.Form):
+    otp = forms.CharField(max_length = 6)
+
+
+class RecoverPasswordForm(forms.Form):
+    password = forms.CharField(widget = forms.PasswordInput)
+    confirm_password = forms.CharField(widget = forms.PasswordInput)

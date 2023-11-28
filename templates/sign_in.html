@@ -1,4 +1,3 @@
-{% load socialaccount %}
 {% load static %}
 
 
@@ -6,7 +5,7 @@
 <html lang="en">
 
 <head>
-  <base href="{% static '' %}" target="_blank">
+  <base href="{% static '' %}">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
@@ -37,7 +36,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid ps-2 pe-0">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="landing_page.html">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="/">
               EduSchedula
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +51,10 @@
               </ul>
               <ul class="navbar-nav d-lg-flex d-none">
                 <li class="nav-item d-flex align-items-center">
-                  <a class="btn btn-outline-primary btn-sm mb-0 me-2" target="_blank" href="sign-up.html">Sign Up</a>
+                  <a class="btn btn-outline-primary btn-sm mb-0 me-2" target="_blank" href="/register">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                  <a href="sign-in.html" class="btn btn-sm mb-0 me-1 bg-gradient-dark">Sign In</a>
+                  <a href="/login" class="btn btn-sm mb-0 me-1 bg-gradient-dark">Sign In</a>
                 </li>
               </ul>
             </div>
@@ -77,7 +76,7 @@
                   <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
                   <div class="row mt-3">
                     <div class="col text-center ms-auto">
-                      <a class="btn btn-link px-3" href="{% provider_login_url 'google' %}">
+                      <a class="btn btn-link px-3" href="javascript:;">
                         <i class="fa fa-google text-white text-lg"></i>
                       </a>
                     </div>
@@ -85,12 +84,12 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start">
+                <form role="form" class="text-start" method="POST">
                   {% csrf_token %}
 
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Username</label>
-                    <input name="username" type="email" class="form-control">
+                    <input name="username" type="text" class="form-control">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
@@ -101,11 +100,15 @@
                     <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Don't have an account?
-                    <a href="sign-up.html" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                    <a href="/register" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                  </p>
+                  <p class="mt-4 text-sm text-center">
+                    Don't remember Password?
+                    <a href="/page_forgot_password" class="text-primary text-gradient font-weight-bold">Forget Password</a>
                   </p>
                 </form>
               </div>
@@ -129,28 +132,8 @@
       </footer>
     </div>
   </main>
-  <!-- Google Sign In -->
-  <script>
-    function onSuccess(googleUser) {
-        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-        console.log(error);
-    }
-    function renderButton() {
-        gapi.signin2.render('my-signin2', {
-            'scope': 'profile email',
-            'width': 240,
-            'height': 50,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
-  </script>
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
   <!--   Core JS Files   -->
+  
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>

@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mk#5w7)^$pg_npxu-fyg&c(#^%s@k88a(qqies+i6z0mw_lj+a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
+    'localhost',
     '127.0.0.1',
     '192.168.1.6',
 ]
@@ -111,6 +112,14 @@ WSGI_APPLICATION = 'ttapp.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db',
+        'USER': 'postgres',
+        'PASSWORD': 'Vignesh9870',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
@@ -118,7 +127,7 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-               'rest_framework.authentication.TokenAuthentication',
+                'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES':(
                 'rest_framework.permissions.IsAuthenticated',
