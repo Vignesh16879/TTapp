@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'ttapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db',
+        'NAME': '',
         'USER': 'postgres',
         'PASSWORD': 'Vignesh9870',
         'HOST': 'localhost',
